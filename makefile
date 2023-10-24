@@ -3,7 +3,7 @@
 nombre = ESTDLIB
 
 CC = clang
-CFlags = -Wall -std=c11 -pedantic-errors -O3
+CFlags = -Wall -std=c11 -pedantic -pedantic-errors -O3
 Libs = 
 SOFlags = -fPIC -shared
 

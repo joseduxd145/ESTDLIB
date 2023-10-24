@@ -5,15 +5,15 @@
 
 typedef struct linkedList
 {
-    node *head;
-    node *iterator;
-    size_t elements;
+    node *head;         //Nodo que representa la cabeza de la lista
+    node *iterator;     //Nodo que permite iterar la lista
+    size_t elements;    //Numero de elementos contenidos por la lista
 }linkedList;
 
 typedef struct node
 {
-    void *data;
-    node *next;
+    void *data;     //Puntero a los datos
+    node *next;     //Puntero al siguiente nodo
 }node;
 
 linkedList *newLinkedList(void)
@@ -168,9 +168,21 @@ void *removeElement(linkedList *ll, void *data)
         tmp->next = ll->iterator->next;
 
         free(ll->iterator);
+
+        ll->elements--;
     }
 
     ll->iterator = ll->head;
 
     return salida;
+}
+
+unsigned long getElements(linkedList *ll)
+{
+    if(!ll)
+    {
+        return 0;
+    }
+
+    return ll->elements;
 }
