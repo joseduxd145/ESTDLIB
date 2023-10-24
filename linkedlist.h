@@ -10,5 +10,6 @@ int insertElement(linkedList *ll, void *data);
 int insertHead(linkedList *ll, void *data);
 void *getNext(linkedList *ll);
 void resetIterator(linkedList *ll);
+void *removeElement(linkedList *ll, void *data);
 
 #endif

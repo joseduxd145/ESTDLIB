@@ -34,6 +34,11 @@ linkedList *newLinkedList(void)
 
 void dropLinkedList(linkedList *ll)
 {
+    if(!ll)
+    {
+        return;
+    }
+
     ll->iterator = ll->head;
 
     node *tmp = NULL;
@@ -52,10 +57,15 @@ void dropLinkedList(linkedList *ll)
 
 int insertElement(linkedList *ll, void *data)
 {
+    if(!ll || !data)
+    {
+        return 1;
+    }
+
     node *element = malloc(sizeof(node));
     if(!element)
     {
-        return 1;
+        return 2;
     }
 
     element->data = data;
@@ -85,10 +95,15 @@ int insertElement(linkedList *ll, void *data)
 
 int insertHead(linkedList *ll, void *data)
 {
+    if(!ll || !data)
+    {
+        return 1;
+    }
+
     node *element = malloc(sizeof(node));
     if(!element)
     {
-        return 1;
+        return 2;
     }
 
     element->data = data;
@@ -103,6 +118,11 @@ int insertHead(linkedList *ll, void *data)
 
 void *getNext(linkedList *ll)
 {
+    if(!ll)
+    {
+        return NULL;
+    }
+
     if(!ll->iterator)
     {
         return NULL;
@@ -116,5 +136,41 @@ void *getNext(linkedList *ll)
 
 void resetIterator(linkedList *ll)
 {
+    if(!ll)
+    {
+        return;
+    }
+
     ll->iterator = ll->head;
+}
+
+void *removeElement(linkedList *ll, void *data)
+{
+    if(!ll || !data)
+    {
+        return NULL;
+    }
+
+    ll->iterator = ll->head;
+    node *tmp = ll->iterator;
+    void *salida = NULL;
+
+    while(ll->iterator->data != data && ll->iterator->next != NULL)
+    {
+        tmp = ll->iterator;
+        ll->iterator = ll->iterator->next;
+    }
+
+    if(ll->iterator->data == data)
+    {
+        salida = ll->iterator->data;
+
+        tmp->next = ll->iterator->next;
+
+        free(ll->iterator);
+    }
+
+    ll->iterator = ll->head;
+
+    return salida;
 }
