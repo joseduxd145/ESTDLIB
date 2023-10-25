@@ -4,7 +4,7 @@
 typedef struct stack stack;
 
 stack *newStack(int ic);
-void dropStack(stack *st);
+int dropStack(stack *st);
 int push(stack *st, void *data);
 void *pop(stack *st);
 int isEmpty(stack *st);
