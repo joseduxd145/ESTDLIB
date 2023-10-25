@@ -14,5 +14,8 @@ libinstall: solib
 	sudo cp ./*.h /usr/local/include/
 solib: build
 	$(CC) $(CFlags) $(SOFlags) -o./build/lib$(nombre).so ./*c $(Libs)
+rebuild: build
+	rm ./build/lib$(nombre).so
+	$(CC) $(CFlags) $(SOFlags) -o./build/lib$(nombre).so ./*c $(Libs)
 build:
 	mkdir build
