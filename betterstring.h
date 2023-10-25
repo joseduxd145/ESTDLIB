@@ -1,6 +1,0 @@
-#ifndef ESTDLIB_BETTER_STRING
-#define ESTDLIB_BETTER_STRING
-
-
-
-#endif
