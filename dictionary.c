@@ -13,8 +13,13 @@ typedef struct dictionary
     bool freeAll;   //Determina si al llamar drop se asumira que hay que liberar los contenidos con free
 }dictionary;
 
-//Funcion interna para expandir la memoria de un diccionario, duplica el size cada vez
+/*
+Funcion interna para expandir la memoria de un diccionario, duplica el size cada vez
+param dd El diccionario que incrementar
+@return 0 en caso de exito, !0 en caso de fallo
+*/
 int expandDictionary(dictionary *dd);
+
 
 dictionary *newDictionary(bool freeOnDrop)
 {
