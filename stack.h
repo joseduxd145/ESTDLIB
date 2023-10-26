@@ -10,6 +10,7 @@ void *pop(stack *st);
 int isEmpty(stack *st);
 int isFull(stack *st);
 void *top(stack *st);
-int ensureCapacity(stack *st, int c);
+int getCapacity(stack *ll);
+int setCapacity(stack *st, int c);
 
 #endif

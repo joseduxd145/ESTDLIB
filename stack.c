@@ -126,7 +126,16 @@ void *top(stack *st)
     return st->data[st->pointer - 1];
 }
 
-int ensureCapacity(stack *st, int c)
+int getCapacity(stack *ll)
+{
+    if(!ll)
+    {
+        return -1;
+    }
+    return ll->capacity;
+}
+
+int setCapacity(stack *st, int c)
 {
     if(!st)
     {
@@ -138,14 +147,12 @@ int ensureCapacity(stack *st, int c)
         return -2;
     }
 
-    int tmpSize = c + st->pointer;
-
-    if(tmpSize < st->capacity)
+    if(c < st->pointer)
     {
         return 0;
     }
 
-    void **tmpArray = malloc((tmpSize + st->capacity) * sizeof(void*));
+    void **tmpArray = malloc(c * sizeof(void*));
     if(!tmpArray)
     {
         return -3;
@@ -155,6 +162,7 @@ int ensureCapacity(stack *st, int c)
 
     free(st->data);
     st->data = tmpArray;
+    st->capacity = c;
 
     return 0;
 }
