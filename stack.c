@@ -9,7 +9,7 @@ typedef struct stack
     int capacity;
 }stack;
 
-stack *newStack(int ic)
+stack *ESTDLIB_newStack(int ic)
 {
     if(ic < 1)
     {
@@ -35,7 +35,7 @@ stack *newStack(int ic)
     return st;
 }
 
-int dropStack(stack *st)
+int ESTDLIB_dropStack(stack *st)
 {
     if(!st)
     {
@@ -53,7 +53,7 @@ int dropStack(stack *st)
     return 0;
 }
 
-int push(stack *st, void *data)
+int ESTDLIB_push(stack *st, void *data)
 {
     if(!st || !data)
     {
@@ -71,7 +71,7 @@ int push(stack *st, void *data)
     return 0;
 }
 
-void *pop(stack *st)
+void *ESTDLIB_pop(stack *st)
 {
     if(!st)
     {
@@ -87,7 +87,7 @@ void *pop(stack *st)
     return st->data[st->pointer];
 }
 
-int isEmpty(stack *st)
+int ESTDLIB_isEmpty(stack *st)
 {
     if(!st)
     {
@@ -97,7 +97,7 @@ int isEmpty(stack *st)
     return st->pointer;
 }
 
-int isFull(stack *st)
+int ESTDLIB_isFull(stack *st)
 {
     if(!st)
     {
@@ -111,7 +111,7 @@ int isFull(stack *st)
     return 0;
 }
 
-void *top(stack *st)
+void *ESTDLIB_top(stack *st)
 {
     if(!st)
     {
@@ -126,7 +126,7 @@ void *top(stack *st)
     return st->data[st->pointer - 1];
 }
 
-int getCapacity(stack *ll)
+int ESTDLIB_getCapacity(stack *ll)
 {
     if(!ll)
     {
@@ -135,7 +135,7 @@ int getCapacity(stack *ll)
     return ll->capacity;
 }
 
-int setCapacity(stack *st, int c)
+int ESTDLIB_setCapacity(stack *st, int c)
 {
     if(!st)
     {

@@ -3,14 +3,14 @@
 
 typedef struct stack stack;
 
-stack *newStack(int ic);
-int dropStack(stack *st);
-int push(stack *st, void *data);
-void *pop(stack *st);
-int isEmpty(stack *st);
-int isFull(stack *st);
-void *top(stack *st);
-int getCapacity(stack *ll);
-int setCapacity(stack *st, int c);
+stack *ESTDLIB_newStack(int ic);
+int ESTDLIB_dropStack(stack *st);
+int ESTDLIB_push(stack *st, void *data);
+void *ESTDLIB_pop(stack *st);
+int ESTDLIB_isEmpty(stack *st);
+int ESTDLIB_isFull(stack *st);
+void *ESTDLIB_top(stack *st);
+int ESTDLIB_getCapacity(stack *ll);
+int ESTDLIB_setCapacity(stack *st, int c);
 
 #endif

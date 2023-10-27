@@ -16,7 +16,7 @@ typedef struct node
     node *next;     //Puntero al siguiente nodo
 }node;
 
-linkedList *newLinkedList(void)
+linkedList *ESTDLIB_newLinkedList(void)
 {
     //Alocar una estructura de lista enlazada
     linkedList *ll = malloc(sizeof(linkedList));
@@ -34,7 +34,7 @@ linkedList *newLinkedList(void)
     return ll;
 }
 
-void dropLinkedList(linkedList *ll)
+void ESTDLIB_dropLinkedList(linkedList *ll)
 {
     //Comprobar que la lista es un puntero valido
     if(!ll)
@@ -67,7 +67,7 @@ void dropLinkedList(linkedList *ll)
     free(ll);
 }
 
-int insertElement(linkedList *ll, void *data)
+int ESTDLIB_insertElement(linkedList *ll, void *data)
 {
     //Comprobar si la lista y data son punteros validos
     if(!ll || !data)
@@ -117,7 +117,7 @@ int insertElement(linkedList *ll, void *data)
     return 0;
 }
 
-int insertHead(linkedList *ll, void *data)
+int ESTDLIB_insertHead(linkedList *ll, void *data)
 {
     //Comprobar si ll y data son punteros validos
     if(!ll || !data)
@@ -148,7 +148,7 @@ int insertHead(linkedList *ll, void *data)
     return 0;
 }
 
-void *getNext(linkedList *ll)
+void *ESTDLIB_getNext(linkedList *ll)
 {
     //Comprobar que ll es valido
     if(!ll)
@@ -170,7 +170,7 @@ void *getNext(linkedList *ll)
     return data;
 }
 
-void resetIterator(linkedList *ll)
+void ESTDLIB_resetIterator(linkedList *ll)
 {
     //Comprobar que la ll es un puntero valido
     if(!ll)
@@ -182,7 +182,7 @@ void resetIterator(linkedList *ll)
     ll->iterator = ll->head;
 }
 
-void *removeElement(linkedList *ll, void *data)
+void *ESTDLIB_removeElement(linkedList *ll, void *data)
 {
     //Comprobar si ll y data son punteros validos
     if(!ll || !data)
@@ -223,7 +223,7 @@ void *removeElement(linkedList *ll, void *data)
     return salida;
 }
 
-unsigned long getElements(linkedList *ll)
+unsigned long ESTDLIB_getElements(linkedList *ll)
 {
     //Comprobar que ll es un valor valido
     if(!ll)

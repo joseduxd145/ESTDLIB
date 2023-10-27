@@ -21,7 +21,7 @@ param dd El diccionario que incrementar
 int expandDictionary(dictionary *dd);
 
 
-dictionary *newDictionary(bool freeOnDrop)
+dictionary *ESTDLIB_newDictionary(bool freeOnDrop)
 {
     dictionary *dd = malloc(sizeof(dictionary));
     if(!dd)
@@ -57,7 +57,7 @@ dictionary *newDictionary(bool freeOnDrop)
     return dd;
 }
 
-void dropDictionary(dictionary *dd)
+void ESTDLIB_dropDictionary(dictionary *dd)
 {
     if(!dd)
     {
@@ -91,7 +91,7 @@ void dropDictionary(dictionary *dd)
     free(dd);
 }
 
-int insertKeyPair(dictionary *dd, char *key, void *data)
+int ESTDLIB_insertKeyPair(dictionary *dd, char *key, void *data)
 {
     if(!dd || !key || !data)
     {
@@ -119,7 +119,7 @@ int insertKeyPair(dictionary *dd, char *key, void *data)
     return 0;;
 }
 
-void *getData(dictionary *dd, char *key)
+void *ESTDLIB_getData(dictionary *dd, char *key)
 {
     if(!dd || !key)
     {
@@ -142,7 +142,7 @@ void *getData(dictionary *dd, char *key)
     return NULL;
 }
 
-int expandDictionary(dictionary *dd)
+int ESTDLIB_expandDictionary(dictionary *dd)
 {
     if(!dd)
     {
