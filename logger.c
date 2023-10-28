@@ -52,7 +52,7 @@ int ESTDLIB_log(logger *lg, riskLevel risk, const char *data)
         level = "[LOW]";
         break;
     case MEDIUM:
-        level = "[MEDIUM]";
+        level = "[MID]";
         break;
     case HIGH:
         level = "[HIGH]";
@@ -60,21 +60,18 @@ int ESTDLIB_log(logger *lg, riskLevel risk, const char *data)
     case FATAL:
         level = "[FATAL]";
         break;
-    default:
-        level = "[NULL]";
-        break;
     }
     time_t now = time(NULL);
     char *fechaHora = asctime(localtime(&now));
-    fechaHora[strlen(fechaHora)] = '\t';
+    fechaHora[strlen(fechaHora) - 1] = '\t';
 
-    lg->f = fopen(lg->logFile, "w");
+    lg->f = fopen(lg->logFile, "a");
     if(!lg->f)
     {
         return 2;
     }
 
-    fprintf(lg->f, "%s\t\t%s%s\n", level, fechaHora, data);
+    fprintf(lg->f, "%s\t%s%s\n", level, fechaHora, data);
 
     fclose(lg->f);
     return 0;

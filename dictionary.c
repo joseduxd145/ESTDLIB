@@ -18,7 +18,7 @@ Funcion interna para expandir la memoria de un diccionario, duplica el size cada
 param dd El diccionario que incrementar
 @return 0 en caso de exito, !0 en caso de fallo
 */
-int expandDictionary(dictionary *dd);
+int ESTDLIB_expandDictionary(dictionary *dd);
 
 
 dictionary *ESTDLIB_newDictionary(bool freeOnDrop)
@@ -105,7 +105,7 @@ int ESTDLIB_insertKeyPair(dictionary *dd, char *key, void *data)
 
     if(dd->pairs >= dd->size)
     {
-        if(expandDictionary(dd))
+        if(ESTDLIB_expandDictionary(dd))
         {
             return 3;
         }
