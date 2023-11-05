@@ -6,6 +6,13 @@ typedef struct linkedList linkedList;
 //Un nodo de la lista
 typedef struct node node;
 
+//Definicion de estructura que representa una lista enlazada
+typedef struct linkedList
+{
+    node *head;         //Nodo que representa la cabeza de la lista
+    node *iterator;     //Nodo que permite iterar la lista
+}linkedList;
+
 /*
 Funcion que devuelve un puntero a una lista
 @return El puntero a la lista o NULL en caso de fallo
@@ -49,11 +56,5 @@ Funcion que busca el la lista por el elemento data y elimina su nodo y modifica 
 @return Un puntero a el dato que contenia o null si no se encontro el elemento o hay un error
 */
 void *ESTDLIB_removeElement(linkedList *ll, void *data);
-/*
-Funcion que devuelve el numero de elementos contenidos en la lista
-@param ll La lista de la que obtener los datos
-@return La cantidad de elementos
-*/
-unsigned long ESTDLIB_getElements(linkedList *ll);
 
 #endif

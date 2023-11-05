@@ -3,13 +3,6 @@
 #include <stdint.h>
 #include <string.h>
 
-typedef struct linkedList
-{
-    node *head;         //Nodo que representa la cabeza de la lista
-    node *iterator;     //Nodo que permite iterar la lista
-    size_t elements;    //Numero de elementos contenidos por la lista
-}linkedList;
-
 typedef struct node
 {
     void *data;     //Puntero a los datos
@@ -29,7 +22,6 @@ linkedList *ESTDLIB_newLinkedList(void)
     //Inicializar los campos
     ll->head = NULL;
     ll ->iterator = NULL;
-    ll->elements = 0;
 
     return ll;
 }
@@ -110,9 +102,6 @@ int ESTDLIB_insertElement(linkedList *ll, void *data)
         //En caso de que no ubiese ningun elemento se asigna a la cabeza
         ll->head = element;
     }
-    
-    //Se incrementa el numero de elementos
-    ll->elements++;
 
     return 0;
 }
@@ -140,8 +129,6 @@ int ESTDLIB_insertHead(linkedList *ll, void *data)
 
     //Asignar la cabeza al nuevo elemento
     ll->head = element;
-    //Incrementar el numero de elementos
-    ll->elements++;
     //Reiniciar el iterador a la cabeza
     ll->iterator = ll->head;
 
@@ -213,24 +200,10 @@ void *ESTDLIB_removeElement(linkedList *ll, void *data)
         tmp->next = ll->iterator->next;
         //Liberar el nodo
         free(ll->iterator);
-        //Reducir el numero de elementos
-        ll->elements--;
     }
 
     //Devolver el iterador a la cabeza
     ll->iterator = ll->head;
 
     return salida;
-}
-
-unsigned long ESTDLIB_getElements(linkedList *ll)
-{
-    //Comprobar que ll es un valor valido
-    if(!ll)
-    {
-        return 0;
-    }
-
-    //Devolver el numero de elementos
-    return ll->elements;
 }

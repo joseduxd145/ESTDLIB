@@ -6,7 +6,7 @@
 
 typedef struct hashMap
 {
-    linkedList *data;
+    linkedList **data;
     size_t size;
 }hashMap;
 
@@ -32,4 +32,48 @@ unsigned int hashFunction(const char *input)
 
     
     return output % 100000000;
+}
+
+hashMap *ESTDLIB_newHashMap(size_t size)
+{
+    if(size < 1)
+    {
+        return NULL;
+    }
+
+    hashMap *hm = malloc(sizeof(hashMap));
+    if(!hm)
+    {
+        return NULL;
+    }
+
+    hm->data = malloc(size * sizeof(linkedList));
+    if(!hm->data)
+    {
+        free(hm);
+        return NULL;
+    }
+
+    for(size_t i = 0; i < size; i++)
+    {
+        hm->data[i] = ESTDLIB_newLinkedList();
+        if(!hm->data[i])
+        {
+            for(size_t j = 0; j < size; j++)
+                ESTDLIB_dropLinkedList(hm->data[i]);
+
+            free(hm->data);
+            free(hm);
+            return NULL;
+        }
+    }
+
+    hm->size = size;
+
+    return hm;
+}
+
+void ESTDLIB_dropHashMap(hashMap *hm, int flags)
+{
+
 }
