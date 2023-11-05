@@ -1,8 +1,8 @@
 #ifndef ESTDLIB_LOGGER
 #define ESTDLIB_LOGGER
 
-typedef struct logger logger;
-typedef enum riskLevel
+typedef struct ESTDLIB_logger logger;
+typedef enum ESTDLIB_riskLevel
 {
     LOW,
     MEDIUM,
