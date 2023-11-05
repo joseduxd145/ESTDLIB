@@ -4,7 +4,7 @@
 #include <string.h>
 #include <time.h>
 
-typedef struct logger
+typedef struct ESTDLIB_logger
 {
     const char *logFile;
     FILE *f;
