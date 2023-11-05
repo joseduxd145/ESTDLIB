@@ -18,7 +18,7 @@ typedef struct keyValue
 
 unsigned int hashFunction(const char *input)
 {
-    size_t output = 0x555555;
+    unsigned int output = 0x555555;
     const int caracter = 13;
     const int mod = 31;
 
@@ -75,5 +75,26 @@ hashMap *ESTDLIB_newHashMap(size_t size)
 
 void ESTDLIB_dropHashMap(hashMap *hm, int flags)
 {
+    if(!hm)
+    {
+        return;
+    }
+    void *tmp = NULL;
 
+    for(size_t i = 0; i < hm->size; i++)
+    {
+        if(flags & ESTDLIB_HASHMAP_FREEVALUES)
+        {
+            ESTDLIB_resetIterator(hm->data[i]);
+            while((tmp = ESTDLIB_getNext(hm->data[i])) != NULL)
+            {
+                free(tmp);
+            }
+        }
+
+        ESTDLIB_dropLinkedList(hm->data[i]);
+    }
+
+    free(hm->data);
+    free(hm);
 }
